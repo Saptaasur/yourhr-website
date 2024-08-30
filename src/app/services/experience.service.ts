@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ExperienceService {
-  private apiUrl = 'http://localhost:5000/api/experiences';
+  private apiUrl = 'https://yourhr-backend-4edy.onrender.com/api/experiences';
 
   constructor(private http: HttpClient) {}
 

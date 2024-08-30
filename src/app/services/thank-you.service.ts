@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ThankYouService {
-  private apiUrl = 'https://yourhr-backend-q92i.onrender.com/api/thankyou'; // Update with your backend URL
+  private apiUrl = 'https://yourhr-backend-4edy.onrender.com/api/thankyou'; // Update with your backend URL
 
   constructor(private http: HttpClient) { }
 

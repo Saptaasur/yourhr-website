@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UploadService {
-  private apiUrl = 'http://localhost:5000/api/upload'; // Backend API URL
+  private apiUrl = 'https://yourhr-backend-4edy.onrender.com/api/upload'; // Backend API URL
 
   constructor(private http: HttpClient) { }
 

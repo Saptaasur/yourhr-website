@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SignUpService {
-  private apiUrl = 'http://localhost:5000/api/signup'; // Update with your backend URL
+  private apiUrl = 'https://yourhr-backend-4edy.onrender.com/api/signup'; // Update with your backend URL
 
   constructor(private http: HttpClient) { }
 
