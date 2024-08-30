@@ -1,0 +1,27 @@
+<div class="flex items-center justify-center min-h-screen bg-blue-500">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+    <div class="flex justify-center mb-6">
+      <img src="/LOGO.png" alt="Logo" class="h-24 w-auto" />
+    </div>
+    <h2 class="text-2xl font-bold mb-6">Resume and Cover Letter</h2>
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="resume" class="block text-gray-700 font-medium">Upload Resume (PDF):<span class="text-red-500">*</span></label>
+      <input type="file" (change)="onFileSelected($event, 'resume')" formControlName="resume" accept=".pdf" />
+    </div>
+    <div>
+      <label for="coverLetter" class="block text-gray-700 font-medium">Upload Cover Letter (PDF)<span class="text-red-500">*</span>:</label>
+      <input type="file" (change)="onFileSelected($event, 'coverLetter')" formControlName="coverLetter" accept=".pdf" />
+    </div>
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+    [disabled]="!files['resume'] || !files['coverLetter'] || fileErrors['resume'] || fileErrors['coverLetter']">Upload</button>
+  </form>
+
+  <div *ngIf="uploadSuccess" class="success-message">
+    Files uploaded successfully!
+  </div>
+  <div *ngIf="uploadError" class="error-message">
+    {{ uploadError }}
+  </div>
+</div>
+</div>

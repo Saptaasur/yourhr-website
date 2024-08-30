@@ -1,0 +1,48 @@
+<div class="flex items-center justify-center min-h-screen bg-blue-500">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+    <div class="flex justify-center mb-6">
+      <img src="/LOGO.png" alt="Logo" class="h-24 w-auto" />
+    </div>
+    <h2 class="text-2xl font-bold mb-6">Education and Training</h2>
+    <form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
+      <div formArrayName="education">
+        <div *ngFor="let entry of educationEntries.controls; let i = index" [formGroupName]="i" class="mb-4">
+          <h3 class="text-lg font-semibold mb-2">Diploma {{i + 1}}</h3>
+
+          <label class="block text-gray-700">Degree <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-4 py-2 border rounded-lg" formControlName="degree" />
+          <div *ngIf="entry.get('degree')?.invalid && (entry.get('degree')?.touched)" class="text-red-500 text-sm mt-1">
+            Degree is required.
+          </div>
+
+          <label class="block text-gray-700">School <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-4 py-2 border rounded-lg" formControlName="school" />
+          <div *ngIf="entry.get('school')?.invalid && (entry.get('school')?.touched)" class="text-red-500 text-sm mt-1">
+            School is required.
+          </div>
+
+          <label class="block text-gray-700">Year of Graduation <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-4 py-2 border rounded-lg" formControlName="year" />
+          <div *ngIf="entry.get('year')?.invalid && (entry.get('year')?.touched)" class="text-red-500 text-sm mt-1">
+            <ng-container *ngIf="entry.get('year')?.errors?.['required']">Year is required.</ng-container>
+            <ng-container *ngIf="entry.get('year')?.errors?.['pattern']">Invalid year format.</ng-container>
+          </div>
+
+          <label class="block text-gray-700">Description <span class="text-red-500">*</span></label>
+          <textarea class="w-full px-4 py-2 border rounded-lg" formControlName="description" rows="3"></textarea>
+          <div *ngIf="entry.get('description')?.invalid && (entry.get('description')?.touched)" class="text-red-500 text-sm mt-1">
+            Description is required.
+          </div>
+        </div>
+      </div>
+
+      <button type="button" (click)="addEducation()" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition mb-4">
+        Add More Education
+      </button>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+        Next
+      </button>
+    </form>
+  </div>
+</div>
